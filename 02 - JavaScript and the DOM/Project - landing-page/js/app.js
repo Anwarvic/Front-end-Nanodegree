@@ -19,7 +19,7 @@
 */
 const sections = document.querySelectorAll("section");
 const navList = document.querySelector("#navbar__list");
-let activeSectionID = sections[0].textContent;
+let activeSection = sections[0];
 
 
 /**
@@ -38,36 +38,31 @@ let activeSectionID = sections[0].textContent;
 
 // build the nav
 const fragment = document.createDocumentFragment();
-
 for (let i = 0; i < sections.length; i++) {
     const newElement = document.createElement('li');
-    const heading = sections[i].querySelector("h2").textContent;
     // adding the inner text
-    newElement.innerText = heading;
+    newElement.innerText = sections[i].querySelector("h2").textContent;
     // adding the class
     newElement.classList.add("menu__link");
     // adding an onclick event listener
-    newElement.addEventListener('click', function(event){
-        const currentSection = event.target;
+    newElement.addEventListener('click', function(){
+        const currentSection = document.getElementById("section"+(i+1));
         // Add class 'active' to section when near top of viewport
         
         // remove 'active' class from activeSection
-        const activeSection = document.querySelector("#"+activeSectionID);
         activeSection.classList.remove("active");
         // add 'active' class to the currentSection
         currentSection.classList.add("active");
         activeSection = currentSection;
 
-        // scroll to currentSection
-        currentSection.scrollIntoView();
-        
-        // Scroll to anchor ID using scrollTO event
-        // const boundingRect = currentSection.getBoundingClientRect();
-        // currentSection.scrollTo({
-        //     top: boundingRect.top,
-        //     left: boundingRect.left,
-        //     behavior: 'smooth'
-        // });
+        // Scroll to anchor ID using scrollTo event
+        const navListHeight = navList.offsetHeight;
+        const boundingRect = currentSection.getBoundingClientRect();
+        window.scrollTo({
+            left: boundingRect.left + window.scrollX,
+            top: boundingRect.top + window.scrollY-navListHeight,
+            behavior: 'smooth',
+        });
     });
     fragment.appendChild(newElement);
 }
@@ -76,14 +71,5 @@ navList.appendChild(fragment);
 
 /**
  * End Main Functions
- * Begin Events
  * 
 */
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
