@@ -19,7 +19,7 @@ body {
 }
 
 
-/* Typeography General*/
+/* Typography General*/
 h1 {
     font-family: 'Fira Sans', sans-serif;
     font-size: 3em;
@@ -74,6 +74,12 @@ section {
     display: inline-block;
 }
 
+
+/* .navbar__menu .menu__link:focus {
+    background: #333;
+    color: #fff !important; 
+} */
+
 .navbar__menu .menu__link {
     display: block;
     padding: 1em;
@@ -86,8 +92,13 @@ section {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
-    cursor: pointer; /* added this */
+    cursor: pointer;
 }
+
+.navbar__menu .active {
+    background: #cecece;
+}
+
 
 /* Header Styles */
 .page__header {
