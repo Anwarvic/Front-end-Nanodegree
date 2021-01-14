@@ -3,7 +3,7 @@
 
 /* Global Variables */
 const baseURL = "http://api.openweathermap.org/data/2.5/forecast"
-const weatherAPIKey = "8dff14203378c3b7ee6e95b2ff6fc043";
+const weatherAPIKey = "[OpenWeather API Key]";
 const backendURL = "http://localhost:3000"
 
 
